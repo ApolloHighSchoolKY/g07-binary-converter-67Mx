@@ -25,14 +25,19 @@ public class BinaryConverter
     }
 
     //Methods
+    public void setValue(int newValue)
+    {
+    	value=newValue;
+    }
+
     public int getValue()
     {
     	return value;
     }
 
-    public void setValue(int newValue)
+    public void setBinary(String newBinary)
     {
-    	value=newValue;
+        binaryValue=newBinary;
     }
 
     public String getBinary()
@@ -43,38 +48,39 @@ public class BinaryConverter
     public String toBinary()
     {
     	//Convert the integer value to binary
-        int halfIt=128;
         String totalBin="";
-        for (int i=0; i<8; i++)
+        for (int i=7; i>-1; i--)
         {
-            if (value-halfIt>-1)
+            if (value-Math.pow(2, i)>-1)
             {
-                value-=halfIt;
+                value-=Math.pow(2, i);
                 totalBin+="1";
             }
-            else if (value-halfIt<0)
+            else
             {
                 totalBin+="0";
             }
-            halfIt/=2;
         }
 
-    	return totalBin + " toBin";
+    	return totalBin;
     }
 
     public int toDecimal()
     {
     	//Convert the binary value to decimal
         int decVal=0;
-        int decNum=128;
         for (int i=0; i<binaryValue.length(); i++)
         {
             if (binaryValue.charAt(i)=='1')
-                decVal+=decNum;
-            decNum/=2;
+                decVal+=Math.pow(2, 7-i);
         }
     	return decVal;
     }
 
+    public String toString()
+    {
+        return "" + "The binary value of " + getValue() + " is " + toBinary() + "\n"
+                  + "The decimal value of " + getBinary() + " is " + toDecimal();
+    }
 
 }

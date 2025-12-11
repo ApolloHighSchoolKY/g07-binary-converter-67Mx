@@ -16,11 +16,15 @@ public class BinaryConverterRunner
 
     	System.out.println((int)Math.pow(2,4));
 
-    	BinaryConverter jane = new BinaryConverter("11010011");
+    	BinaryConverter jane = new BinaryConverter("00010011");
+
+		jane.setValue(100);
 
     	System.out.println(jane.getBinary());
 
     	System.out.println(jane.toDecimal());
+
+		System.out.println(jane.toString());
     }
 
 
