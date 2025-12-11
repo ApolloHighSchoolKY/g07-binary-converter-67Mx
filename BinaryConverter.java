@@ -35,19 +35,45 @@ public class BinaryConverter
     	value=newValue;
     }
 
+    public String getBinary()
+    {
+        return binaryValue;
+    }
+
     public String toBinary()
     {
     	//Convert the integer value to binary
+        int halfIt=128;
+        String totalBin="";
+        for (int i=0; i<8; i++)
+        {
+            if (value-halfIt>-1)
+            {
+                value-=halfIt;
+                totalBin+="1";
+            }
+            else if (value-halfIt<0)
+            {
+                totalBin+="0";
+            }
+            halfIt/=2;
+        }
 
-
-    	return "";
+    	return totalBin + " toBin";
     }
 
     public int toDecimal()
     {
     	//Convert the binary value to decimal
-
-    	return 0;
+        int decVal=0;
+        int decNum=128;
+        for (int i=0; i<binaryValue.length(); i++)
+        {
+            if (binaryValue.charAt(i)=='1')
+                decVal+=decNum;
+            decNum/=2;
+        }
+    	return decVal;
     }
 
 
